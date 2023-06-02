@@ -6,10 +6,10 @@ namespace launchMVC.Controllers
 {
     public class TestController : Controller
     {
+        private static List<MyViewModel> mModels = new List<MyViewModel>();
         public IActionResult Index()
         {
-            MyViewModel mod = new MyViewModel() { Name = "Sif", Age = 2 };
-            return View(mod);
+            return View(mModels);
         }
 
         public IActionResult Create()
@@ -20,6 +20,7 @@ namespace launchMVC.Controllers
 
         public IActionResult CreateModel(MyViewModel myViewModel) { 
             //return View("Index");
+            mModels.Add(myViewModel);
             return RedirectToAction(nameof(Index));
         }
 
